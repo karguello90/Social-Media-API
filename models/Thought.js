@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reactionsSchema = require('./Reaction');
-
+const formatDate = require('./Date.js');
 // Schema to create User Model
 const thoughtSchema = new Schema(
   {
@@ -16,6 +16,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: timestamp => formatDate(timestamp)
     },
     reactions: [reactionsSchema],
   },
